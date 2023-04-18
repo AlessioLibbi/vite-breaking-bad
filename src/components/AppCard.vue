@@ -4,9 +4,7 @@ export default {
 
     props: {
         cards: Object
-
     }
-
 }
 
 </script>
@@ -25,7 +23,7 @@ export default {
 
 <style scoped lang="scss">
 .card {
-    height: 400px;
+
     background-color: #D48F38;
 
     h5 {
@@ -33,5 +31,10 @@ export default {
         color: white;
         font-size: 1rem;
     }
+
+    .card-body {
+        height: 100px;
+    }
+
 }
 </style>

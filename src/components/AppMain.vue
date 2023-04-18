@@ -11,7 +11,8 @@ export default {
     data() {
         return {
             store,
-            cardType: ["Nordic", "Spellbook", "Ancient Gear"]
+            cardType: ["Pendulum", "Spellbook", "Ancient Gear"],
+
         }
 
     },
@@ -28,7 +29,7 @@ export default {
         </select>
         <div class="container p-5 my-5">
             <div class="header d-flex align-items-center">
-                <h3 class="mx-3">Found 20 card</h3>
+                <h3 class="mx-3">Ci sono {{ this.store.cardArray.length }} carte</h3>
             </div>
             <div class="row row-cols-5 d-flex flex-row">
                 <AppCard :cards="store.cardArray" />
