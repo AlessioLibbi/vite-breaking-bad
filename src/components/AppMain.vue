@@ -4,13 +4,14 @@ import { store } from "../store"
 
 export default {
     name: "AppMain",
+    emits: ["filterArche"],
     components: {
         AppCard
     },
     data() {
-        console.log(store.cardArray);
         return {
             store,
+            cardType: ["Nordic", "Spellbook", "Ancient Gear"]
         }
 
     },
@@ -20,10 +21,10 @@ export default {
 
 <template>
     <div class="container-fluid  p-5">
-        <select name="" id="">
-            <option value="">Dungeon</option>
-            <option value="">and</option>
-            <option value="">Dragons</option>
+        <select @change="$emit('filterArche')" name="tipus" id="tipus" v-model="store.filter">
+            <option value="">All</option>
+            <option v-for="tipus in cardType" :value="tipus">{{ tipus }}</option>
+
         </select>
         <div class="container p-5 my-5">
             <div class="header d-flex align-items-center">

@@ -16,12 +16,30 @@ export default {
         }
     },
     mounted() {
-        axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0")
-            .then((resp) => {
-                const myData = resp.data.data;
-                this.store.cardArray = myData;
+        this.filterArche()
+    },
+
+    methods: {
+        filterArche() {
+            const params = {};
+            if (this.store.filter) {
+                params.tipus = this.store.filter;
+            }
+            axios.get(this.store.apiURL, {
+                params: {
+                    archetype: params.tipus
+                }
+            }).then(resp => {
+                this.store.cardArray = resp.data.data;
+            }).catch(error => {
+                console.log(error);
+            }).finally(() => {
 
             })
+        },
+        handleFilter() {
+            this.filterArche();
+        }
     }
 
 }
@@ -30,7 +48,7 @@ export default {
 
 <template>
     <AppHeader />
-    <AppMain />
+    <AppMain @filterArche="handleFilter" />
 </template>
 
 <style  lang="scss">

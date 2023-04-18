@@ -1,10 +1,14 @@
 <script>
 export default {
     name: "AppCard",
+
     props: {
         cards: Object
+
     }
+
 }
+
 </script>
 
 <template>
